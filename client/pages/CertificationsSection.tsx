@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "./CertificationsSection.css";
+import { Button } from "@/components/ui/button";
+import { Sun, Moon } from "lucide-react";
 
 export default function CertificationsSection() {
   const [flippedId, setFlippedId] = useState<number | null>(null);
+  const [darkMode, setDarkMode] = useState(false);
 
   const certifications = [
     {
