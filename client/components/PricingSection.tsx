@@ -31,7 +31,6 @@ const plans = [
     highlights: [
       "50 AI-generated social media posts per month",
       "8 AI-optimized blog articles with SEO analysis",
-      "AI-powered video scripts per month",
       "Dynamic content personalization for different audience segments",
       "Comprehensive campaign strategy across Google, Facebook, LinkedIn",
       "Advanced audience modeling and targeting",
