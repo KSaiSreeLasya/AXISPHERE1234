@@ -70,29 +70,29 @@ export default function CertificationsSection() {
                 className={`flip-card-inner ${flippedId === cert.id ? "flipped" : ""}`}
               >
                 {/* Front Side */}
-                <div className="flip-card-front bg-white rounded-2xl shadow-xl p-6 flex flex-col items-center justify-center">
+                <div className={`flip-card-front rounded-2xl shadow-xl p-6 flex flex-col items-center justify-center ${darkMode ? 'bg-luxury-800 border border-luxury-700' : 'bg-white'}`}>
                   <img
                     src={cert.image}
                     alt={cert.title}
                     className="w-80 h-96 object-contain rounded-lg"
                   />
-                  <h3 className="text-lg font-semibold text-gray-800 mt-4">
+                  <h3 className={`text-lg font-semibold mt-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
                     {cert.title}
                   </h3>
                 </div>
 
                 {/* Back Side */}
-                <div className="flip-card-back bg-white rounded-2xl shadow-xl p-8 text-center flex flex-col justify-center items-center">
-                  <h3 className="text-xl font-bold text-gray-800">{cert.title}</h3>
-                  <p className="text-gray-500 text-sm mt-2">{cert.subtitle}</p>
-                  <p className="text-gray-600 mt-4 text-sm leading-relaxed">
+                <div className={`flip-card-back rounded-2xl shadow-xl p-8 text-center flex flex-col justify-center items-center ${darkMode ? 'bg-luxury-900 border border-luxury-700' : 'bg-white'}`}>
+                  <h3 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{cert.title}</h3>
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-500'} text-sm mt-2`}>{cert.subtitle}</p>
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mt-4 text-sm leading-relaxed`}>
                     {cert.description}
                   </p>
                   <a
                     href={cert.pdf}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-6 inline-block bg-violet-600 text-white px-6 py-3 rounded-lg hover:bg-violet-700 shadow-md transition-all duration-300"
+                    className={`mt-6 inline-block px-6 py-3 rounded-lg shadow-md transition-all duration-300 ${darkMode ? 'bg-gold-600 text-white hover:bg-gold-700' : 'bg-violet-600 text-white hover:bg-violet-700'}`}
                   >
                     View Certification
                   </a>
