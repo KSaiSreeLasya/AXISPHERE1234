@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface BlogPost {
   id: string;
@@ -24,18 +24,21 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
-    id: 'axisphere-case-study',
-    title: "Transforming Insurance Sales with Axisphere’s AI-Powered Digital Marketing",
-    excerpt: 'Axisphere implemented an end-to-end AI performance-marketing solution for a mid-sized insurer, improving lead quality, personalization, onboarding speed, and ROI. Crafting excellence through AI-driven marketing and automation.',
+    id: "axisphere-case-study",
+    title:
+      "Transforming Insurance Sales with Axisphere’s AI-Powered Digital Marketing",
+    excerpt:
+      "Axisphere implemented an end-to-end AI performance-marketing solution for a mid-sized insurer, improving lead quality, personalization, onboarding speed, and ROI. Crafting excellence through AI-driven marketing and automation.",
     author: {
-      name: 'Axisphere Team',
-      avatar: '/placeholder.svg',
+      name: "Axisphere Team",
+      avatar: "/placeholder.svg",
     },
-    category: 'Case Study',
-    tags: ['AI', 'Marketing', 'Insurance', 'Case Study'],
-    publishDate: '2025-01-01',
-    readTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80',
+    category: "Case Study",
+    tags: ["AI", "Marketing", "Insurance", "Case Study"],
+    publishDate: "2025-01-01",
+    readTime: "8 min read",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
     featured: true,
     content: `Problem Statement
 
@@ -93,18 +96,18 @@ Axisphere’s solution replaced slow, manual efforts with a streamlined, AI-powe
 ];
 
 function renderPostContent(content: string) {
-  const lines = content.split('\n');
+  const lines = content.split("\n");
   const nodes: any[] = [];
   let currentList: string[] | null = null;
 
   const isHeading = (text: string) => {
     const h = text.trim().toLowerCase();
     return (
-      h.startsWith('problem') ||
-      h.startsWith('solution') ||
-      h.startsWith('tools used') ||
-      h.startsWith('how ai was used') ||
-      h.startsWith('6-month impact')
+      h.startsWith("problem") ||
+      h.startsWith("solution") ||
+      h.startsWith("tools used") ||
+      h.startsWith("how ai was used") ||
+      h.startsWith("6-month impact")
     );
   };
 
@@ -112,46 +115,52 @@ function renderPostContent(content: string) {
     const line = raw.trim();
     if (!line) {
       if (currentList) {
-        nodes.push({ type: 'list', items: currentList });
+        nodes.push({ type: "list", items: currentList });
         currentList = null;
       }
       continue;
     }
 
-    if (line.startsWith('-')) {
+    if (line.startsWith("-")) {
       if (!currentList) currentList = [];
-      currentList.push(line.replace(/^-+\s*/, ''));
+      currentList.push(line.replace(/^-+\s*/, ""));
     } else if (isHeading(line)) {
       if (currentList) {
-        nodes.push({ type: 'list', items: currentList });
+        nodes.push({ type: "list", items: currentList });
         currentList = null;
       }
-      nodes.push({ type: 'heading', text: line });
+      nodes.push({ type: "heading", text: line });
     } else {
       if (currentList) {
-        nodes.push({ type: 'list', items: currentList });
+        nodes.push({ type: "list", items: currentList });
         currentList = null;
       }
-      nodes.push({ type: 'para', text: line });
+      nodes.push({ type: "para", text: line });
     }
   }
 
-  if (currentList) nodes.push({ type: 'list', items: currentList });
+  if (currentList) nodes.push({ type: "list", items: currentList });
 
   return (
     <div>
       {nodes.map((n, idx) => {
-        if (n.type === 'heading') {
+        if (n.type === "heading") {
           return (
-            <div key={idx} className="mt-6 mb-2 text-lg font-semibold text-gold-600">
+            <div
+              key={idx}
+              className="mt-6 mb-2 text-lg font-semibold text-gold-600"
+            >
               {n.text}
             </div>
           );
         }
 
-        if (n.type === 'list') {
+        if (n.type === "list") {
           return (
-            <ul key={idx} className="list-disc list-inside mb-3 text-muted-foreground">
+            <ul
+              key={idx}
+              className="list-disc list-inside mb-3 text-muted-foreground"
+            >
               {n.items.map((it: string, i: number) => (
                 <li key={i} className="mb-1">
                   {it}
@@ -173,17 +182,17 @@ function renderPostContent(content: string) {
 
 export default function BlogSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const featuredPost = blogPosts.find(post => post.featured);
-  const regularPosts = blogPosts.filter(post => !post.featured);
+  const featuredPost = blogPosts.find((post) => post.featured);
+  const regularPosts = blogPosts.filter((post) => !post.featured);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
@@ -204,7 +213,7 @@ export default function BlogSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-6xl font-bold text-foreground mb-6"
           >
-            Latest{' '}
+            Latest{" "}
             <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">
               Insights
             </span>
@@ -215,7 +224,7 @@ export default function BlogSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
           >
-            Explore our thoughts on design, technology, and strategy. Stay ahead 
+            Explore our thoughts on design, technology, and strategy. Stay ahead
             of the curve with insights from our team of industry experts.
           </motion.p>
         </motion.div>
@@ -241,9 +250,9 @@ export default function BlogSection() {
             className="space-y-6"
           >
             {regularPosts.map((post, index) => (
-              <BlogPostCard 
-                key={post.id} 
-                post={post} 
+              <BlogPostCard
+                key={post.id}
+                post={post}
                 index={index}
                 isInView={isInView}
               />
@@ -259,7 +268,7 @@ export default function BlogSection() {
           className="text-center mt-16"
         >
           <Button
-            onClick={() => scrollToSection('#contact')}
+            onClick={() => scrollToSection("#contact")}
             variant="outline"
             className="border-2 border-gold-500 text-gold-600 hover:bg-gold-500 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:shadow-glow-gold"
           >
@@ -288,7 +297,7 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ y: -8 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
       {/* Image */}
       <div className="relative aspect-[16/10] overflow-hidden">
@@ -298,7 +307,7 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
           className="w-full h-full object-cover transition-transform duration-700"
           animate={isHovered ? { scale: 1.1 } : { scale: 1 }}
         />
-        
+
         {/* Overlay */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -322,9 +331,9 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
         {/* Read More Button */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ 
+          animate={{
             opacity: isHovered ? 1 : 0,
-            scale: isHovered ? 1 : 0.8 
+            scale: isHovered ? 1 : 0.8,
           }}
           transition={{ duration: 0.3 }}
           className="absolute bottom-6 right-6"
@@ -344,10 +353,10 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
         <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
           <span className="flex items-center gap-1">
             <Calendar size={16} />
-            {new Date(post.publishDate).toLocaleDateString('en-US', { 
-              month: 'short', 
-              day: 'numeric', 
-              year: 'numeric' 
+            {new Date(post.publishDate).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
             })}
           </span>
           <span className="flex items-center gap-1">
@@ -366,16 +375,25 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
               {post.excerpt}
             </p>
             <div className="flex gap-2 items-center">
-              <Button size="sm" className="px-4 py-2" onClick={() => setShowFull(true)}>
+              <Button
+                size="sm"
+                className="px-4 py-2"
+                onClick={() => setShowFull(true)}
+              >
                 Learn more
               </Button>
             </div>
           </>
         ) : (
           <div className="text-muted-foreground leading-relaxed mb-6">
-            {renderPostContent(post.content || '')}
+            {renderPostContent(post.content || "")}
             <div className="mt-4">
-              <Button size="sm" variant="ghost" className="px-4 py-2 border" onClick={() => setShowFull(false)}>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="px-4 py-2 border"
+                onClick={() => setShowFull(false)}
+              >
                 View less
               </Button>
             </div>
@@ -406,7 +424,9 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
             className="w-10 h-10 rounded-full object-cover"
           />
           <div>
-            <div className="font-medium text-foreground">{post.author.name}</div>
+            <div className="font-medium text-foreground">
+              {post.author.name}
+            </div>
             <div className="text-sm text-muted-foreground">{post.category}</div>
           </div>
         </div>
@@ -414,12 +434,13 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
 
       {/* Shimmer Effect */}
       <motion.div
-        initial={{ x: '-100%' }}
-        animate={{ x: isHovered ? '100%' : '-100%' }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        initial={{ x: "-100%" }}
+        animate={{ x: isHovered ? "100%" : "-100%" }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
         className="absolute inset-0 bg-shimmer opacity-20 pointer-events-none"
         style={{
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
+          background:
+            "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)",
         }}
       />
     </motion.article>
@@ -470,9 +491,9 @@ function BlogPostCard({ post, index, isInView }: BlogPostCardProps) {
           </span>
           <span className="flex items-center gap-1">
             <Calendar size={12} />
-            {new Date(post.publishDate).toLocaleDateString('en-US', { 
-              month: 'short', 
-              day: 'numeric' 
+            {new Date(post.publishDate).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
             })}
           </span>
           <span className="flex items-center gap-1">
@@ -490,14 +511,23 @@ function BlogPostCard({ post, index, isInView }: BlogPostCardProps) {
             <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2 mb-3">
               {post.excerpt}
             </p>
-            <Button size="xs" className="mt-2 px-3 py-1" onClick={() => setShowFull(true)}>
+            <Button
+              size="xs"
+              className="mt-2 px-3 py-1"
+              onClick={() => setShowFull(true)}
+            >
               Learn more
             </Button>
           </>
         ) : (
           <div className="text-sm text-muted-foreground leading-relaxed mb-3">
-            {renderPostContent(post.content || '')}
-            <Button size="xs" variant="ghost" className="mt-3 px-3 py-1 border" onClick={() => setShowFull(false)}>
+            {renderPostContent(post.content || "")}
+            <Button
+              size="xs"
+              variant="ghost"
+              className="mt-3 px-3 py-1 border"
+              onClick={() => setShowFull(false)}
+            >
               View less
             </Button>
           </div>

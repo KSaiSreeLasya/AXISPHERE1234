@@ -245,7 +245,6 @@ export default function HeroSection() {
                 />
               </Button>
             </motion.div>
-
           </motion.div>
 
           <StatsBar />

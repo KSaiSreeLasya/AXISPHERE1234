@@ -8,11 +8,11 @@ export default function CertificationsSection() {
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
-    const getDark = () => document.documentElement.classList.contains('dark');
+    const getDark = () => document.documentElement.classList.contains("dark");
     setDarkMode(getDark());
     const onTheme = () => setDarkMode(getDark());
-    window.addEventListener('theme-change', onTheme);
-    return () => window.removeEventListener('theme-change', onTheme);
+    window.addEventListener("theme-change", onTheme);
+    return () => window.removeEventListener("theme-change", onTheme);
   }, []);
 
   const certifications = [
@@ -41,14 +41,24 @@ export default function CertificationsSection() {
   };
 
   return (
-    <section id="certifications" className={`cert-section py-24 text-center ${darkMode ? 'bg-luxury-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
+    <section
+      id="certifications"
+      className={`cert-section py-24 text-center ${darkMode ? "bg-luxury-900 text-white" : "bg-gray-50 text-gray-900"}`}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between max-w-3xl mx-auto mb-6">
           <div className="text-left">
-            <h2 className={`text-4xl font-bold mb-2 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Our Certifications</h2>
-            <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} max-w-2xl`}>
-              Axisphere Mediaworx LLP is recognized globally for its commitment to quality,
-              security, and excellence through internationally accredited standards.
+            <h2
+              className={`text-4xl font-bold mb-2 ${darkMode ? "text-white" : "text-gray-800"}`}
+            >
+              Our Certifications
+            </h2>
+            <p
+              className={`${darkMode ? "text-gray-300" : "text-gray-600"} max-w-2xl`}
+            >
+              Axisphere Mediaworx LLP is recognized globally for its commitment
+              to quality, security, and excellence through internationally
+              accredited standards.
             </p>
           </div>
 
@@ -61,8 +71,12 @@ export default function CertificationsSection() {
               aria-pressed={darkMode}
               aria-label="Toggle certifications theme"
             >
-              {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-              <span className="text-sm">{darkMode ? 'Light' : 'Dark'}</span>
+              {darkMode ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
+              <span className="text-sm">{darkMode ? "Light" : "Dark"}</span>
             </Button>
           </div>
         </div>
@@ -78,29 +92,45 @@ export default function CertificationsSection() {
                 className={`flip-card-inner ${flippedId === cert.id ? "flipped" : ""}`}
               >
                 {/* Front Side */}
-                <div className={`flip-card-front rounded-2xl shadow-xl p-6 flex flex-col items-center justify-center ${darkMode ? 'bg-luxury-800 border border-luxury-700' : 'bg-white'}`}>
+                <div
+                  className={`flip-card-front rounded-2xl shadow-xl p-6 flex flex-col items-center justify-center ${darkMode ? "bg-luxury-800 border border-luxury-700" : "bg-white"}`}
+                >
                   <img
                     src={cert.image}
                     alt={cert.title}
                     className="w-80 h-96 object-contain rounded-lg"
                   />
-                  <h3 className={`text-lg font-semibold mt-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+                  <h3
+                    className={`text-lg font-semibold mt-4 ${darkMode ? "text-white" : "text-gray-800"}`}
+                  >
                     {cert.title}
                   </h3>
                 </div>
 
                 {/* Back Side */}
-                <div className={`flip-card-back rounded-2xl shadow-xl p-8 text-center flex flex-col justify-center items-center ${darkMode ? 'bg-luxury-900 border border-luxury-700' : 'bg-white'}`}>
-                  <h3 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{cert.title}</h3>
-                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-500'} text-sm mt-2`}>{cert.subtitle}</p>
-                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mt-4 text-sm leading-relaxed`}>
+                <div
+                  className={`flip-card-back rounded-2xl shadow-xl p-8 text-center flex flex-col justify-center items-center ${darkMode ? "bg-luxury-900 border border-luxury-700" : "bg-white"}`}
+                >
+                  <h3
+                    className={`text-xl font-bold ${darkMode ? "text-white" : "text-gray-800"}`}
+                  >
+                    {cert.title}
+                  </h3>
+                  <p
+                    className={`${darkMode ? "text-gray-300" : "text-gray-500"} text-sm mt-2`}
+                  >
+                    {cert.subtitle}
+                  </p>
+                  <p
+                    className={`${darkMode ? "text-gray-300" : "text-gray-600"} mt-4 text-sm leading-relaxed`}
+                  >
                     {cert.description}
                   </p>
                   <a
                     href={cert.pdf}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`mt-6 inline-block px-6 py-3 rounded-lg shadow-md transition-all duration-300 ${darkMode ? 'bg-gold-600 text-white hover:bg-gold-700' : 'bg-violet-600 text-white hover:bg-violet-700'}`}
+                    className={`mt-6 inline-block px-6 py-3 rounded-lg shadow-md transition-all duration-300 ${darkMode ? "bg-gold-600 text-white hover:bg-gold-700" : "bg-violet-600 text-white hover:bg-violet-700"}`}
                   >
                     View Certification
                   </a>
