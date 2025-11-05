@@ -35,7 +35,7 @@ const blogPosts: BlogPost[] = [
     tags: ['AI', 'Marketing', 'Insurance', 'Case Study'],
     publishDate: '2025-01-01',
     readTime: '8 min read',
-    image: '/placeholder.svg',
+    image: 'https://cdn.builder.io/api/v1/image/assets%2Fdf131029371243a6bdd4cd7752a9db95%2Fa8345e51f005444c85b1278ca8962524?format=webp&width=800',
     featured: true,
     content: `Problem Statement
 
