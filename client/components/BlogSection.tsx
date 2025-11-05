@@ -365,13 +365,20 @@ function FeaturedPostCard({ post }: FeaturedPostCardProps) {
             <p className="text-muted-foreground leading-relaxed mb-4">
               {post.excerpt}
             </p>
-            <Button size="sm" className="px-4 py-2" onClick={() => setShowFull(true)}>
-              Learn more
-            </Button>
+            <div className="flex gap-2 items-center">
+              <Button size="sm" className="px-4 py-2" onClick={() => setShowFull(true)}>
+                Learn more
+              </Button>
+            </div>
           </>
         ) : (
-          <div className="text-muted-foreground leading-relaxed mb-6 whitespace-pre-line">
-            {post.content}
+          <div className="text-muted-foreground leading-relaxed mb-6">
+            {renderPostContent(post.content || '')}
+            <div className="mt-4">
+              <Button size="sm" variant="ghost" className="px-4 py-2 border" onClick={() => setShowFull(false)}>
+                View less
+              </Button>
+            </div>
           </div>
         )}
 
