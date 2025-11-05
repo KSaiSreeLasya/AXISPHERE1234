@@ -33,7 +33,7 @@ export default function CertificationsSection() {
   };
 
   return (
-    <section id="certifications" className={`cert-section py-24 text-center ${darkMode ? 'bg-luxury-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
+    <section id="certifications" className={`cert-section py-24 text-center ${darkMode ? 'bg-luxury-900 text-white dark' : 'bg-gray-50 text-gray-900'}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between max-w-3xl mx-auto mb-6">
           <div className="text-left">
