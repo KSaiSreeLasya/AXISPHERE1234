@@ -92,6 +92,85 @@ Axisphere’s solution replaced slow, manual efforts with a streamlined, AI-powe
   },
 ];
 
+function renderPostContent(content: string) {
+  const lines = content.split('\n');
+  const nodes: any[] = [];
+  let currentList: string[] | null = null;
+
+  const isHeading = (text: string) => {
+    const h = text.trim().toLowerCase();
+    return (
+      h.startsWith('problem') ||
+      h.startsWith('solution') ||
+      h.startsWith('tools used') ||
+      h.startsWith('how ai was used') ||
+      h.startsWith('6-month impact')
+    );
+  };
+
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line) {
+      if (currentList) {
+        nodes.push({ type: 'list', items: currentList });
+        currentList = null;
+      }
+      continue;
+    }
+
+    if (line.startsWith('-')) {
+      if (!currentList) currentList = [];
+      currentList.push(line.replace(/^-+\s*/, ''));
+    } else if (isHeading(line)) {
+      if (currentList) {
+        nodes.push({ type: 'list', items: currentList });
+        currentList = null;
+      }
+      nodes.push({ type: 'heading', text: line });
+    } else {
+      if (currentList) {
+        nodes.push({ type: 'list', items: currentList });
+        currentList = null;
+      }
+      nodes.push({ type: 'para', text: line });
+    }
+  }
+
+  if (currentList) nodes.push({ type: 'list', items: currentList });
+
+  return (
+    <div>
+      {nodes.map((n, idx) => {
+        if (n.type === 'heading') {
+          return (
+            <div key={idx} className="mt-6 mb-2 text-lg font-semibold text-gold-600">
+              {n.text}
+            </div>
+          );
+        }
+
+        if (n.type === 'list') {
+          return (
+            <ul key={idx} className="list-disc list-inside mb-3 text-muted-foreground">
+              {n.items.map((it: string, i: number) => (
+                <li key={i} className="mb-1">
+                  {it}
+                </li>
+              ))}
+            </ul>
+          );
+        }
+
+        return (
+          <p key={idx} className="mb-3 text-muted-foreground">
+            {n.text}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function BlogSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
