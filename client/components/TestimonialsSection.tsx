@@ -172,14 +172,13 @@ export default function TestimonialsSection() {
               transition={{ duration: 0.6, ease: 'easeInOut' }}
               className="grid lg:grid-cols-2 gap-12 items-center"
             >
-              {/* Video/Image Side */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative group"
               >
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-luxury-800 border border-gold-500/20">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-luxury-800 border border-gold-500/20">
                   <img
                     src={currentTestimonial.avatar}
                     alt={currentTestimonial.name}
