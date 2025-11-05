@@ -434,6 +434,7 @@ interface BlogPostCardProps {
 
 function BlogPostCard({ post, index, isInView }: BlogPostCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [showFull, setShowFull] = useState(false);
 
   return (
     <motion.article
