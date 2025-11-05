@@ -36,14 +36,8 @@ export default function Index() {
       {/* Services Section */}
       <ServicesSection />
 
-      {/* Case Studies Section */}
-      <CaseStudiesSection />
-
       {/* Pricing Section */}
       <PricingSection />
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
 
       {/* About Section */}
       <AboutSection />
