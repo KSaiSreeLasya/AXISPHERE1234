@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { ExternalLink, Play } from 'lucide-react';
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
 interface CaseStudy {
   id: string;
@@ -20,96 +20,109 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    id: '1',
-    title: 'Platinum Luxury Resort',
-    client: 'Azure Resorts',
-    category: 'Branding',
-    description: 'Complete brand transformation for a luxury resort chain, creating an elevated visual identity that increased bookings by 340%.',
-    image: '/placeholder.svg',
-    tags: ['Brand Identity', 'Visual Design', 'Luxury'],
+    id: "1",
+    title: "Platinum Luxury Resort",
+    client: "Azure Resorts",
+    category: "Branding",
+    description:
+      "Complete brand transformation for a luxury resort chain, creating an elevated visual identity that increased bookings by 340%.",
+    image: "/placeholder.svg",
+    tags: ["Brand Identity", "Visual Design", "Luxury"],
     results: [
-      { metric: 'Booking Increase', value: '340%' },
-      { metric: 'Brand Recognition', value: '85%' },
+      { metric: "Booking Increase", value: "340%" },
+      { metric: "Brand Recognition", value: "85%" },
     ],
   },
   {
-    id: '2',
-    title: 'Fintech Revolution',
-    client: 'NovaBank',
-    category: 'Web Design',
-    description: 'Modern banking platform redesign that simplified complex financial processes and improved user engagement.',
-    image: '/placeholder.svg',
-    tags: ['UI/UX', 'Fintech', 'Mobile-First'],
+    id: "2",
+    title: "Fintech Revolution",
+    client: "NovaBank",
+    category: "Web Design",
+    description:
+      "Modern banking platform redesign that simplified complex financial processes and improved user engagement.",
+    image: "/placeholder.svg",
+    tags: ["UI/UX", "Fintech", "Mobile-First"],
     results: [
-      { metric: 'User Engagement', value: '225%' },
-      { metric: 'Task Completion', value: '67%' },
+      { metric: "User Engagement", value: "225%" },
+      { metric: "Task Completion", value: "67%" },
     ],
   },
   {
-    id: '3',
-    title: 'Global Fashion Campaign',
-    client: 'Meridian Fashion',
-    category: 'Marketing',
-    description: 'International fashion campaign that elevated brand presence across 15 markets with stunning visual storytelling.',
-    image: '/placeholder.svg',
-    tags: ['Fashion', 'Global Campaign', 'Social Media'],
+    id: "3",
+    title: "Global Fashion Campaign",
+    client: "Meridian Fashion",
+    category: "Marketing",
+    description:
+      "International fashion campaign that elevated brand presence across 15 markets with stunning visual storytelling.",
+    image: "/placeholder.svg",
+    tags: ["Fashion", "Global Campaign", "Social Media"],
     results: [
-      { metric: 'Reach Increase', value: '450%' },
-      { metric: 'Engagement Rate', value: '12.8%' },
+      { metric: "Reach Increase", value: "450%" },
+      { metric: "Engagement Rate", value: "12.8%" },
     ],
   },
   {
-    id: '4',
-    title: 'E-commerce Optimization',
-    client: 'LuxeGoods',
-    category: 'Performance',
-    description: 'Data-driven optimization campaign that transformed conversion rates and revenue for premium e-commerce.',
-    image: '/placeholder.svg',
-    tags: ['E-commerce', 'Conversion', 'Analytics'],
+    id: "4",
+    title: "E-commerce Optimization",
+    client: "LuxeGoods",
+    category: "Performance",
+    description:
+      "Data-driven optimization campaign that transformed conversion rates and revenue for premium e-commerce.",
+    image: "/placeholder.svg",
+    tags: ["E-commerce", "Conversion", "Analytics"],
     results: [
-      { metric: 'Conversion Rate', value: '189%' },
-      { metric: 'Revenue Growth', value: '310%' },
+      { metric: "Conversion Rate", value: "189%" },
+      { metric: "Revenue Growth", value: "310%" },
     ],
   },
   {
-    id: '5',
-    title: 'Luxury Automotive Launch',
-    client: 'Prestige Motors',
-    category: 'Branding',
-    description: 'Premium automotive brand launch with comprehensive digital strategy and immersive web experience.',
-    image: '/placeholder.svg',
-    tags: ['Automotive', 'Luxury', 'Digital Strategy'],
+    id: "5",
+    title: "Luxury Automotive Launch",
+    client: "Prestige Motors",
+    category: "Branding",
+    description:
+      "Premium automotive brand launch with comprehensive digital strategy and immersive web experience.",
+    image: "/placeholder.svg",
+    tags: ["Automotive", "Luxury", "Digital Strategy"],
     results: [
-      { metric: 'Pre-orders', value: '2,400' },
-      { metric: 'Brand Awareness', value: '78%' },
+      { metric: "Pre-orders", value: "2,400" },
+      { metric: "Brand Awareness", value: "78%" },
     ],
   },
   {
-    id: '6',
-    title: 'SaaS Platform Redesign',
-    client: 'TechFlow',
-    category: 'Web Design',
-    description: 'Complete platform redesign for B2B SaaS company, improving user experience and reducing churn rate.',
-    image: '/placeholder.svg',
-    tags: ['SaaS', 'B2B', 'UX Research'],
+    id: "6",
+    title: "SaaS Platform Redesign",
+    client: "TechFlow",
+    category: "Web Design",
+    description:
+      "Complete platform redesign for B2B SaaS company, improving user experience and reducing churn rate.",
+    image: "/placeholder.svg",
+    tags: ["SaaS", "B2B", "UX Research"],
     results: [
-      { metric: 'Churn Reduction', value: '45%' },
-      { metric: 'User Satisfaction', value: '94%' },
+      { metric: "Churn Reduction", value: "45%" },
+      { metric: "User Satisfaction", value: "94%" },
     ],
   },
 ];
 
-const categories = ['All', 'Branding', 'Web Design', 'Marketing', 'Performance'];
+const categories = [
+  "All",
+  "Branding",
+  "Web Design",
+  "Marketing",
+  "Performance",
+];
 
 export default function CaseStudiesSection() {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState("All");
   const [hoveredCase, setHoveredCase] = useState<string | null>(null);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const filteredCases = activeCategory === 'All' 
-    ? caseStudies 
-    : caseStudies.filter(study => study.category === activeCategory);
+  const filteredCases =
+    activeCategory === "All"
+      ? caseStudies
+      : caseStudies.filter((study) => study.category === activeCategory);
 
   return (
     <section id="work" ref={ref} className="py-24 bg-luxury-50/30">
@@ -127,7 +140,7 @@ export default function CaseStudiesSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-6xl font-bold text-foreground mb-6"
           >
-            Featured{' '}
+            Featured{" "}
             <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">
               Work
             </span>
@@ -138,8 +151,9 @@ export default function CaseStudiesSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
           >
-            Discover how we've transformed ambitious brands into market leaders 
-            through strategic design, innovative technology, and data-driven results.
+            Discover how we've transformed ambitious brands into market leaders
+            through strategic design, innovative technology, and data-driven
+            results.
           </motion.p>
         </motion.div>
 
@@ -156,8 +170,8 @@ export default function CaseStudiesSection() {
               onClick={() => setActiveCategory(category)}
               className={`relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeCategory === category
-                  ? 'text-white'
-                  : 'text-muted-foreground hover:text-foreground'
+                  ? "text-white"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -169,7 +183,7 @@ export default function CaseStudiesSection() {
                 <motion.div
                   layoutId="activeCategory"
                   className="absolute inset-0 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full"
-                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               )}
               <span className="relative z-10">{category}</span>
@@ -210,7 +224,14 @@ interface CaseStudyCardProps {
   onLeave: () => void;
 }
 
-function CaseStudyCard({ study, index, isInView, isHovered, onHover, onLeave }: CaseStudyCardProps) {
+function CaseStudyCard({
+  study,
+  index,
+  isInView,
+  isHovered,
+  onHover,
+  onLeave,
+}: CaseStudyCardProps) {
   return (
     <motion.div
       layout
@@ -232,7 +253,7 @@ function CaseStudyCard({ study, index, isInView, isHovered, onHover, onLeave }: 
           animate={{ scale: isHovered ? 1.15 : 1 }}
           transition={{ duration: 0.7 }}
         />
-        
+
         {/* Overlay */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -242,14 +263,14 @@ function CaseStudyCard({ study, index, isInView, isHovered, onHover, onLeave }: 
         >
           <motion.div
             initial={{ scale: 0, rotate: -90 }}
-            animate={{ 
-              scale: isHovered ? 1 : 0, 
-              rotate: isHovered ? 0 : -90 
+            animate={{
+              scale: isHovered ? 1 : 0,
+              rotate: isHovered ? 0 : -90,
             }}
-            transition={{ duration: 0.5, type: 'spring', stiffness: 300 }}
+            transition={{ duration: 0.5, type: "spring", stiffness: 300 }}
             className="bg-gold-500 text-white p-4 rounded-full shadow-glow-gold"
           >
-            <Play size={24} className="fill-current" />
+            <ExternalLink size={20} className="fill-current" />
           </motion.div>
         </motion.div>
 
@@ -299,9 +320,9 @@ function CaseStudyCard({ study, index, isInView, isHovered, onHover, onLeave }: 
                 key={tag}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ 
-                  duration: 0.3, 
-                  delay: 0.4 + index * 0.1 + tagIndex * 0.05 
+                transition={{
+                  duration: 0.3,
+                  delay: 0.4 + index * 0.1 + tagIndex * 0.05,
                 }}
                 className="bg-muted text-muted-foreground px-2 py-1 rounded-md text-xs"
               >
@@ -317,14 +338,18 @@ function CaseStudyCard({ study, index, isInView, isHovered, onHover, onLeave }: 
                 key={result.metric}
                 initial={{ opacity: 0, y: 10 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: 0.5 + index * 0.1 + resultIndex * 0.1 
+                transition={{
+                  duration: 0.5,
+                  delay: 0.5 + index * 0.1 + resultIndex * 0.1,
                 }}
                 className="text-center"
               >
-                <div className="text-lg font-bold text-gold-600">{result.value}</div>
-                <div className="text-xs text-muted-foreground">{result.metric}</div>
+                <div className="text-lg font-bold text-gold-600">
+                  {result.value}
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  {result.metric}
+                </div>
               </motion.div>
             ))}
           </div>

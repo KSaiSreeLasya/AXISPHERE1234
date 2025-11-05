@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
-import BrandLogo from '@/components/BrandLogo';
-import ThemeToggle from '@/components/ThemeToggle';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import BrandLogo from "@/components/BrandLogo";
+import ThemeToggle from "@/components/ThemeToggle";
 
 interface NavigationProps {
   className?: string;
 }
 
-export default function Navigation({ className = '' }: NavigationProps) {
+export default function Navigation({ className = "" }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -20,24 +20,23 @@ export default function Navigation({ className = '' }: NavigationProps) {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navigationItems = [
-    { name: 'Services', href: '#services' },
-    { name: 'Work', href: '#work' },
-    { name: 'About', href: '#about' },
-    { name: 'Insights', href: '#insights' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Services", href: "#services" },
+    { name: "About", href: "#about" },
+    { name: "Insights", href: "#insights" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
     setIsMobileMenuOpen(false);
@@ -48,11 +47,11 @@ export default function Navigation({ className = '' }: NavigationProps) {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled 
-            ? 'bg-background/80 backdrop-blur-md border-b border-border/50' 
-            : 'bg-transparent'
+          isScrolled
+            ? "bg-background/80 backdrop-blur-md border-b border-border/50"
+            : "bg-transparent"
         } ${className}`}
       >
         <nav className="container mx-auto px-6 py-4">
@@ -62,7 +61,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
               href="#"
               className="flex items-center"
               whileHover={{ scale: 1.05 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <BrandLogo className="h-[100px] w-auto" />
             </motion.a>
@@ -103,7 +102,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Button
-                    onClick={() => scrollToSection('#contact')}
+                    onClick={() => scrollToSection("#contact")}
                     className="relative bg-luxury-900 hover:bg-luxury-800 text-white px-6 py-2 rounded-full overflow-hidden group transition-all duration-300 hover:shadow-glow-gold"
                   >
                     <span className="relative z-10">Let's Talk</span>
@@ -147,17 +146,19 @@ export default function Navigation({ className = '' }: NavigationProps) {
               className="absolute inset-0 bg-luxury-900/80 backdrop-blur-sm"
               onClick={() => setIsMobileMenuOpen(false)}
             />
-            
+
             {/* Menu Panel */}
             <motion.div
-              initial={{ x: '100%' }}
+              initial={{ x: "100%" }}
               animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="absolute right-0 top-0 h-full w-80 bg-background border-l border-border/20 shadow-luxury"
             >
               <div className="p-6 pt-20">
-                <div className="flex justify-end pb-4"><ThemeToggle /></div>
+                <div className="flex justify-end pb-4">
+                  <ThemeToggle />
+                </div>
                 <div className="space-y-6">
                   {navigationItems.map((item, index) => (
                     <motion.button
@@ -172,7 +173,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
                       {item.name}
                     </motion.button>
                   ))}
-                  
+
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -180,7 +181,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
                     className="pt-6"
                   >
                     <Button
-                      onClick={() => scrollToSection('#contact')}
+                      onClick={() => scrollToSection("#contact")}
                       className="w-full bg-luxury-900 hover:bg-luxury-800 text-white py-3 rounded-full"
                     >
                       Let's Talk

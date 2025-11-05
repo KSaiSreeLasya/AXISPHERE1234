@@ -1,8 +1,6 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
-import CaseStudiesSection from "@/components/CaseStudiesSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import CertificationsSection from "@/pages/CertificationsSection";
 
 import AboutSection from "@/components/AboutSection";
@@ -38,14 +36,8 @@ export default function Index() {
       {/* Services Section */}
       <ServicesSection />
 
-      {/* Case Studies Section */}
-      <CaseStudiesSection />
-
       {/* Pricing Section */}
       <PricingSection />
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
 
       {/* About Section */}
       <AboutSection />
@@ -169,14 +161,6 @@ export default function Index() {
                     className="hover:text-gold-400 transition-colors"
                   >
                     About Us
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#work"
-                    className="hover:text-gold-400 transition-colors"
-                  >
-                    Our Work
                   </a>
                 </li>
                 <li>

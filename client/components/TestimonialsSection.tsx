@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, Quote, Star } from 'lucide-react';
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 
 interface Testimonial {
   id: string;
@@ -13,68 +13,63 @@ interface Testimonial {
   avatar: string;
   logo: string;
   rating: number;
-  hasVideo: boolean;
-  videoThumbnail?: string;
 }
 
 const testimonials: Testimonial[] = [
   {
-    id: '1',
-    name: 'Alexandra Chen',
-    title: 'CEO',
-    company: 'Azure Resorts',
-    quote: 'LuxuryStudio transformed our entire brand identity. The attention to detail and creative vision exceeded every expectation. Our bookings increased by 340% within the first quarter.',
-    avatar: '/placeholder.svg',
-    logo: '/placeholder.svg',
+    id: "1",
+    name: "Alexandra Chen",
+    title: "CEO",
+    company: "Azure Resorts",
+    quote:
+      "LuxuryStudio transformed our entire brand identity. The attention to detail and creative vision exceeded every expectation. Our bookings increased by 340% within the first quarter.",
+    avatar: "/placeholder.svg",
+    logo: "/placeholder.svg",
     rating: 5,
-    hasVideo: true,
-    videoThumbnail: '/placeholder.svg',
   },
   {
-    id: '2',
-    name: 'Marcus Rodriguez',
-    title: 'Founder',
-    company: 'NovaBank',
-    quote: 'The team delivered a financial platform that our users actually love to use. The UX transformation was remarkable - we saw a 225% increase in user engagement immediately.',
-    avatar: '/placeholder.svg',
-    logo: '/placeholder.svg',
+    id: "2",
+    name: "Marcus Rodriguez",
+    title: "Founder",
+    company: "NovaBank",
+    quote:
+      "The team delivered a financial platform that our users actually love to use. The UX transformation was remarkable - we saw a 225% increase in user engagement immediately.",
+    avatar: "/placeholder.svg",
+    logo: "/placeholder.svg",
     rating: 5,
-    hasVideo: false,
   },
   {
-    id: '3',
-    name: 'Sophie Martineau',
-    title: 'Creative Director',
-    company: 'Meridian Fashion',
-    quote: 'Working with LuxuryStudio was like having a creative partner who understood our vision before we did. The global campaign they created elevated our brand to new heights.',
-    avatar: '/placeholder.svg',
-    logo: '/placeholder.svg',
+    id: "3",
+    name: "Sophie Martineau",
+    title: "Creative Director",
+    company: "Meridian Fashion",
+    quote:
+      "Working with LuxuryStudio was like having a creative partner who understood our vision before we did. The global campaign they created elevated our brand to new heights.",
+    avatar: "/placeholder.svg",
+    logo: "/placeholder.svg",
     rating: 5,
-    hasVideo: true,
-    videoThumbnail: '/placeholder.svg',
   },
   {
-    id: '4',
-    name: 'David Kim',
-    title: 'CMO',
-    company: 'LuxeGoods',
-    quote: 'The ROI from their optimization campaign was incredible. 310% revenue growth in 6 months. Their data-driven approach combined with creative excellence is unmatched.',
-    avatar: '/placeholder.svg',
-    logo: '/placeholder.svg',
+    id: "4",
+    name: "David Kim",
+    title: "CMO",
+    company: "LuxeGoods",
+    quote:
+      "The ROI from their optimization campaign was incredible. 310% revenue growth in 6 months. Their data-driven approach combined with creative excellence is unmatched.",
+    avatar: "/placeholder.svg",
+    logo: "/placeholder.svg",
     rating: 5,
-    hasVideo: false,
   },
   {
-    id: '5',
-    name: 'Isabella Torres',
-    title: 'Brand Manager',
-    company: 'Prestige Motors',
-    quote: 'They didn\'t just create a website, they crafted an experience. The automotive launch exceeded all our targets with 2,400 pre-orders in the first month.',
-    avatar: '/placeholder.svg',
-    logo: '/placeholder.svg',
+    id: "5",
+    name: "Isabella Torres",
+    title: "Brand Manager",
+    company: "Prestige Motors",
+    quote:
+      "They didn't just create a website, they crafted an experience. The automotive launch exceeded all our targets with 2,400 pre-orders in the first month.",
+    avatar: "/placeholder.svg",
+    logo: "/placeholder.svg",
     rating: 5,
-    hasVideo: true,
-    videoThumbnail: '/placeholder.svg',
   },
 ];
 
@@ -82,7 +77,7 @@ export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const currentTestimonial = testimonials[currentIndex];
 
@@ -102,7 +97,9 @@ export default function TestimonialsSection() {
   };
 
   const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
+    );
     setIsAutoPlaying(false);
   };
 
@@ -124,7 +121,7 @@ export default function TestimonialsSection() {
           transition={{
             duration: 30,
             repeat: Infinity,
-            ease: 'linear',
+            ease: "linear",
           }}
         />
         <motion.div
@@ -136,7 +133,7 @@ export default function TestimonialsSection() {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: 'linear',
+            ease: "linear",
           }}
         />
       </div>
@@ -155,7 +152,7 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-6xl font-bold text-white mb-6"
           >
-            Client{' '}
+            Client{" "}
             <span className="bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">
               Stories
             </span>
@@ -166,8 +163,8 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed"
           >
-            Discover how we've helped ambitious brands achieve extraordinary results 
-            through strategic design and innovative solutions.
+            Discover how we've helped ambitious brands achieve extraordinary
+            results through strategic design and innovative solutions.
           </motion.p>
         </motion.div>
 
@@ -179,51 +176,21 @@ export default function TestimonialsSection() {
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.6, ease: 'easeInOut' }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
               className="grid lg:grid-cols-2 gap-12 items-center"
             >
-              {/* Video/Image Side */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative group"
               >
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-luxury-800 border border-gold-500/20">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-luxury-800 border border-gold-500/20">
                   <img
-                    src={currentTestimonial.hasVideo ? currentTestimonial.videoThumbnail : currentTestimonial.avatar}
+                    src={currentTestimonial.avatar}
                     alt={currentTestimonial.name}
                     className="w-full h-full object-cover"
                   />
-                  
-                  {currentTestimonial.hasVideo && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.5, type: 'spring', stiffness: 300 }}
-                      className="absolute inset-0 flex items-center justify-center"
-                    >
-                      <motion.button
-                        className="bg-gold-500 text-white p-6 rounded-full shadow-glow-gold group-hover:shadow-glow-gold transition-all duration-300"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        animate={{
-                          boxShadow: [
-                            '0 0 20px rgba(212, 175, 55, 0.3)',
-                            '0 0 30px rgba(212, 175, 55, 0.5)',
-                            '0 0 20px rgba(212, 175, 55, 0.3)',
-                          ],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: 'easeInOut',
-                        }}
-                      >
-                        <Play size={32} className="fill-current ml-1" />
-                      </motion.button>
-                    </motion.div>
-                  )}
                 </div>
 
                 {/* Company Logo */}
@@ -252,7 +219,7 @@ export default function TestimonialsSection() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6, type: 'spring', stiffness: 300 }}
+                  transition={{ delay: 0.6, type: "spring", stiffness: 300 }}
                   className="text-gold-500"
                 >
                   <Quote size={48} />
@@ -342,15 +309,19 @@ export default function TestimonialsSection() {
                   <div
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentIndex
-                        ? 'bg-gold-500'
-                        : 'bg-white/30 hover:bg-white/50'
+                        ? "bg-gold-500"
+                        : "bg-white/30 hover:bg-white/50"
                     }`}
                   />
                   {index === currentIndex && (
                     <motion.div
                       layoutId="activeDot"
                       className="absolute inset-0 w-3 h-3 rounded-full border-2 border-gold-500"
-                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </motion.button>
@@ -377,15 +348,15 @@ export default function TestimonialsSection() {
           >
             <motion.div
               className={`w-20 h-1 bg-white/20 rounded-full overflow-hidden ${
-                isAutoPlaying ? '' : 'opacity-50'
+                isAutoPlaying ? "" : "opacity-50"
               }`}
             >
               {isAutoPlaying && (
                 <motion.div
                   className="h-full bg-gold-500 rounded-full"
-                  initial={{ width: '0%' }}
-                  animate={{ width: '100%' }}
-                  transition={{ duration: 5, ease: 'linear', repeat: Infinity }}
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 5, ease: "linear", repeat: Infinity }}
                   key={currentIndex}
                 />
               )}

@@ -55,6 +55,29 @@
   align-items: center;
 }
 
+/* Dark mode overrides for certifications section (global .dark on root) */
+.dark .cert-section .flip-card-front,
+.dark .cert-section .flip-card-back {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.dark .cert-section .flip-card-front {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  ) !important;
+}
+
+.dark .cert-section .flip-card-back {
+  background: linear-gradient(
+    145deg,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.65)
+  ) !important;
+}
+
 .flip-card-front img {
   width: auto; /* no fixed width */
   height: auto;
@@ -65,7 +88,9 @@
   display: block;
   margin: 0 auto;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
 
 .flip-card-front:hover img {
@@ -75,4 +100,4 @@
 
 a {
   text-decoration: none;
-} 
+}
