@@ -19,6 +19,7 @@ interface BlogPost {
   readTime: string;
   image: string;
   featured: boolean;
+  content?: string;
 }
 
 const blogPosts: BlogPost[] = [
