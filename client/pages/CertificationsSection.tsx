@@ -2,8 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./CertificationsSection.css";
 import { Button } from "@/components/ui/button";
 import { Sun, Moon } from "lucide-react";
+import Seo from "@/components/Seo";
 
 export default function CertificationsSection() {
+  const seoProps = {
+    title: "ISO Certifications | Axisphere – Quality & Security Standards",
+    description: "Axisphere holds ISO 27001:2022 and ISO 9001:2015 certifications, demonstrating commitment to information security, quality management, and excellence.",
+    canonicalPath: "/certifications",
+    keywords: "ISO certification, ISO 27001, ISO 9001, security certification, quality management, certified company, data security, compliance, quality standards"
+  };
   const [flippedId, setFlippedId] = useState<number | null>(null);
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
