@@ -18,7 +18,6 @@ import Contact from "./pages/Contact";
 import CertificationsSection from "./pages/CertificationsSection";
 import Invoice from "./pages/Invoice";
 
-
 const queryClient = new QueryClient();
 
 const App = () => (

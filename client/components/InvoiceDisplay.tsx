@@ -164,8 +164,7 @@ export default function InvoiceDisplay({
     }
   };
 
-  const packageFeatures =
-    PACKAGE_DESCRIPTIONS[invoice.packageName] || [];
+  const packageFeatures = PACKAGE_DESCRIPTIONS[invoice.packageName] || [];
 
   return (
     <div>
@@ -180,7 +179,11 @@ export default function InvoiceDisplay({
           Print / Save as PDF
         </Button>
         {onDownload && (
-          <Button onClick={onDownload} className="gap-2" aria-label="Download invoice">
+          <Button
+            onClick={onDownload}
+            className="gap-2"
+            aria-label="Download invoice"
+          >
             <Download className="w-4 h-4" />
             Download Invoice
           </Button>
@@ -292,7 +295,9 @@ export default function InvoiceDisplay({
             </div>
             <div className="flex justify-between py-3 text-base font-bold bg-gray-100 px-4 rounded-lg border-t-2 border-gold-500">
               <span>Total Amount Due:</span>
-              <span className="text-gold-600">{formatCurrency(invoice.total)}</span>
+              <span className="text-gold-600">
+                {formatCurrency(invoice.total)}
+              </span>
             </div>
           </div>
         </div>
@@ -327,7 +332,10 @@ export default function InvoiceDisplay({
         )}
 
         <div className="mt-12 pt-8 border-t-2 border-gray-300 text-center text-xs text-gray-500">
-          <p>Thank you for your business! For inquiries, contact hello@ai-marketing.studio</p>
+          <p>
+            Thank you for your business! For inquiries, contact
+            hello@ai-marketing.studio
+          </p>
         </div>
       </div>
     </div>
