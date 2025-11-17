@@ -105,7 +105,7 @@ export default function AdminInvoiceForm({
           Invoice Generated Successfully
         </h2>
       </div>
-      <InvoiceDisplay invoice={invoiceData} />
+      <InvoiceDisplay invoice={invoiceData} selectedScope={selectedScope} />
     </div>
   ) : (
     <div className="max-w-4xl mx-auto">
