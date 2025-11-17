@@ -17,6 +17,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import CertificationsSection from "./pages/CertificationsSection";
 import Invoice from "./pages/Invoice";
+import AdminInvoices from "./pages/AdminInvoices";
 
 const queryClient = new QueryClient();
 
