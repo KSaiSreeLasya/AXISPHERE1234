@@ -72,7 +72,7 @@ const plans = [
       "60–80% improvement in marketing ROI",
       "70–90% increase in marketing qualified leads",
       "35–45% reduction in manual marketing tasks",
-      "2–3× improvement in customer engagement scores",
+      "2���3× improvement in customer engagement scores",
     ],
   },
 ];
@@ -146,19 +146,13 @@ export default function PricingSection() {
                 </ul>
               </div>
 
-              <div className="mt-6 space-y-3">
+              <div className="mt-6">
                 <a
                   href="#contact"
                   className="inline-flex w-full items-center justify-center rounded-full bg-gold-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-gold-600"
                 >
                   Get Started
                 </a>
-                <Link
-                  to={`/invoice?package=${encodeURIComponent(p.name)}`}
-                  className="inline-flex w-full items-center justify-center rounded-full border border-gold-500 bg-transparent px-6 py-3 font-semibold text-gold-600 transition-colors hover:bg-gold-50 dark:hover:bg-gold-950/20"
-                >
-                  Generate Invoice
-                </Link>
               </div>
             </div>
           ))}
